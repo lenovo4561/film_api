@@ -1,5 +1,5 @@
 -- MySQL dump for database: db_film
--- Generated on: 2025/10/23 02:26:22
+-- Generated on: 2025/10/27 19:23:55
 -- Host: localhost:3306
 
 SET NAMES utf8mb4;
@@ -72,25 +72,28 @@ CREATE TABLE `t_coin_records` (
   KEY `idx_user_id` (`user_id`),
   KEY `idx_created_at` (`created_at`),
   CONSTRAINT `fk_coin_records_user` FOREIGN KEY (`user_id`) REFERENCES `t_user` (`user_id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of t_coin_records
 -- ----------------------------
 BEGIN;
-INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (1, 55, 20, 'checkin', '第1天签到奖励', 20, '2025-10-20 15:40:24');
-INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (2, 55, 20, 'checkin', '第1天签到奖励', 40, '2025-10-20 15:43:37');
-INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (3, 55, 20, 'checkin', '第1天签到奖励', 60, '2025-10-20 15:44:03');
-INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (4, 55, 20, 'checkin', '第1天签到奖励', 80, '2025-10-20 15:47:42');
-INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (5, 55, 20, 'checkin', '第1天签到奖励', 100, '2025-10-20 15:52:48');
-INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (6, 55, 20, 'checkin', '第1天签到奖励', 120, '2025-10-20 15:55:54');
-INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (7, 55, 20, 'checkin', '第1天签到奖励', 140, '2025-10-20 16:18:12');
-INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (8, 55, 20, 'checkin', '第1天签到奖励', 160, '2025-10-20 16:20:40');
-INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (9, 55, 20, 'checkin', '第1天签到奖励', 180, '2025-10-20 16:29:30');
-INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (10, 55, 20, 'checkin', '第1天签到奖励', 200, '2025-10-20 16:29:49');
-INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (11, 55, 20, 'checkin', '第1天签到奖励', 220, '2025-10-20 16:31:01');
-INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (12, 55, 20, 'checkin', '第1天签到奖励', 240, '2025-10-20 17:04:19');
-INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (13, 55, 20, 'checkin', '第1天签到奖励', 260, '2025-10-22 12:50:48');
+INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (1, 55, 20, 'checkin', '第1天签到奖励', 20, '2025-10-20 07:40:24');
+INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (2, 55, 20, 'checkin', '第1天签到奖励', 40, '2025-10-20 07:43:37');
+INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (3, 55, 20, 'checkin', '第1天签到奖励', 60, '2025-10-20 07:44:03');
+INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (4, 55, 20, 'checkin', '第1天签到奖励', 80, '2025-10-20 07:47:42');
+INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (5, 55, 20, 'checkin', '第1天签到奖励', 100, '2025-10-20 07:52:48');
+INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (6, 55, 20, 'checkin', '第1天签到奖励', 120, '2025-10-20 07:55:54');
+INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (7, 55, 20, 'checkin', '第1天签到奖励', 140, '2025-10-20 08:18:12');
+INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (8, 55, 20, 'checkin', '第1天签到奖励', 160, '2025-10-20 08:20:40');
+INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (9, 55, 20, 'checkin', '第1天签到奖励', 180, '2025-10-20 08:29:30');
+INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (10, 55, 20, 'checkin', '第1天签到奖励', 200, '2025-10-20 08:29:49');
+INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (11, 55, 20, 'checkin', '第1天签到奖励', 220, '2025-10-20 08:31:01');
+INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (12, 55, 20, 'checkin', '第1天签到奖励', 240, '2025-10-20 09:04:19');
+INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (13, 55, 20, 'checkin', '第1天签到奖励', 260, '2025-10-22 04:50:48');
+INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (14, 55, 20, 'checkin', '第1天签到奖励', 280, '2025-10-24 02:17:11');
+INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (15, 55, 20, 'checkin', '第1天签到奖励', 300, '2025-10-27 03:15:00');
+INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (16, 55, 20, 'checkin', '第1天签到奖励', 348, '2025-10-27 04:13:16');
 COMMIT;
 
 -- ----------------------------
@@ -118,8 +121,8 @@ CREATE TABLE `t_comment` (
 -- Records of t_comment
 -- ----------------------------
 BEGIN;
-INSERT INTO `t_comment` (`comment_id`, `user_id`, `movie_id`, `user_score`, `comment_content`, `comment_date`, `support_num`, `is_pass`, `support_user`) VALUES (57, 1, 4, 9, '很好看，挺悲伤的，让我哭一会！', '2019-08-08 07:59:38', 2, 1, '[1,53]');
-INSERT INTO `t_comment` (`comment_id`, `user_id`, `movie_id`, `user_score`, `comment_content`, `comment_date`, `support_num`, `is_pass`, `support_user`) VALUES (58, 1, 7, 8, '很好看，有一起的吗？', '2019-08-08 08:05:46', 2, 1, '[53,1]');
+INSERT INTO `t_comment` (`comment_id`, `user_id`, `movie_id`, `user_score`, `comment_content`, `comment_date`, `support_num`, `is_pass`, `support_user`) VALUES (57, 1, 4, 9, '很好看，挺悲伤的，让我哭一会！', '2019-08-07 23:59:38', 2, 1, '[1,53]');
+INSERT INTO `t_comment` (`comment_id`, `user_id`, `movie_id`, `user_score`, `comment_content`, `comment_date`, `support_num`, `is_pass`, `support_user`) VALUES (58, 1, 7, 8, '很好看，有一起的吗？', '2019-08-08 00:05:46', 2, 1, '[53,1]');
 COMMIT;
 
 -- ----------------------------
@@ -373,6 +376,7 @@ CREATE TABLE `t_user_coins` (
   `user_id` int unsigned NOT NULL,
   `coin_balance` int NOT NULL DEFAULT '0',
   `total_earned` int NOT NULL DEFAULT '0',
+  `last_total_balance` int DEFAULT '0' COMMENT '上一次总余额',
   `last_checkin_date` date DEFAULT NULL,
   `continuous_days` int NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -386,25 +390,25 @@ CREATE TABLE `t_user_coins` (
 -- Records of t_user_coins
 -- ----------------------------
 BEGIN;
-INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (1, 1, 0, 0, NULL, 0, '2025-10-20 15:39:06', '2025-10-20 15:39:06');
-INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (2, 19, 0, 0, NULL, 0, '2025-10-20 15:39:06', '2025-10-20 15:39:06');
-INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (3, 23, 0, 0, NULL, 0, '2025-10-20 15:39:06', '2025-10-20 15:39:06');
-INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (4, 25, 0, 0, NULL, 0, '2025-10-20 15:39:06', '2025-10-20 15:39:06');
-INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (5, 29, 0, 0, NULL, 0, '2025-10-20 15:39:06', '2025-10-20 15:39:06');
-INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (6, 30, 0, 0, NULL, 0, '2025-10-20 15:39:06', '2025-10-20 15:39:06');
-INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (7, 35, 0, 0, NULL, 0, '2025-10-20 15:39:06', '2025-10-20 15:39:06');
-INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (8, 36, 0, 0, NULL, 0, '2025-10-20 15:39:06', '2025-10-20 15:39:06');
-INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (9, 37, 0, 0, NULL, 0, '2025-10-20 15:39:06', '2025-10-20 15:39:06');
-INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (10, 44, 0, 0, NULL, 0, '2025-10-20 15:39:06', '2025-10-20 15:39:06');
-INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (11, 46, 0, 0, NULL, 0, '2025-10-20 15:39:06', '2025-10-20 15:39:06');
-INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (12, 48, 0, 0, NULL, 0, '2025-10-20 15:39:06', '2025-10-20 15:39:06');
-INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (13, 49, 0, 0, NULL, 0, '2025-10-20 15:39:06', '2025-10-20 15:39:06');
-INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (14, 50, 0, 0, NULL, 0, '2025-10-20 15:39:06', '2025-10-20 15:39:06');
-INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (15, 51, 0, 0, NULL, 0, '2025-10-20 15:39:06', '2025-10-20 15:39:06');
-INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (16, 52, 0, 0, NULL, 0, '2025-10-20 15:39:06', '2025-10-20 15:39:06');
-INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (17, 53, 0, 0, NULL, 0, '2025-10-20 15:39:06', '2025-10-20 15:39:06');
-INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (18, 54, 0, 0, NULL, 0, '2025-10-20 15:39:06', '2025-10-20 15:39:06');
-INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (19, 55, 260, 260, '2025-10-21 16:00:00', 1, '2025-10-20 15:39:06', '2025-10-22 12:50:48');
+INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_total_balance`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (1, 1, 0, 0, 0, NULL, 0, '2025-10-20 07:39:06', '2025-10-20 07:39:06');
+INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_total_balance`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (2, 19, 0, 0, 0, NULL, 0, '2025-10-20 07:39:06', '2025-10-20 07:39:06');
+INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_total_balance`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (3, 23, 0, 0, 0, NULL, 0, '2025-10-20 07:39:06', '2025-10-20 07:39:06');
+INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_total_balance`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (4, 25, 0, 0, 0, NULL, 0, '2025-10-20 07:39:06', '2025-10-20 07:39:06');
+INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_total_balance`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (5, 29, 0, 0, 0, NULL, 0, '2025-10-20 07:39:06', '2025-10-20 07:39:06');
+INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_total_balance`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (6, 30, 0, 0, 0, NULL, 0, '2025-10-20 07:39:06', '2025-10-20 07:39:06');
+INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_total_balance`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (7, 35, 0, 0, 0, NULL, 0, '2025-10-20 07:39:06', '2025-10-20 07:39:06');
+INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_total_balance`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (8, 36, 0, 0, 0, NULL, 0, '2025-10-20 07:39:06', '2025-10-20 07:39:06');
+INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_total_balance`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (9, 37, 0, 0, 0, NULL, 0, '2025-10-20 07:39:06', '2025-10-20 07:39:06');
+INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_total_balance`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (10, 44, 0, 0, 0, NULL, 0, '2025-10-20 07:39:06', '2025-10-20 07:39:06');
+INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_total_balance`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (11, 46, 0, 0, 0, NULL, 0, '2025-10-20 07:39:06', '2025-10-20 07:39:06');
+INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_total_balance`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (12, 48, 0, 0, 0, NULL, 0, '2025-10-20 07:39:06', '2025-10-20 07:39:06');
+INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_total_balance`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (13, 49, 0, 0, 0, NULL, 0, '2025-10-20 07:39:06', '2025-10-20 07:39:06');
+INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_total_balance`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (14, 50, 0, 0, 0, NULL, 0, '2025-10-20 07:39:06', '2025-10-20 07:39:06');
+INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_total_balance`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (15, 51, 0, 0, 0, NULL, 0, '2025-10-20 07:39:06', '2025-10-20 07:39:06');
+INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_total_balance`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (16, 52, 0, 0, 0, NULL, 0, '2025-10-20 07:39:06', '2025-10-20 07:39:06');
+INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_total_balance`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (17, 53, 0, 0, 0, NULL, 0, '2025-10-20 07:39:06', '2025-10-20 07:39:06');
+INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_total_balance`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (18, 54, 0, 0, 0, NULL, 0, '2025-10-20 07:39:06', '2025-10-20 07:39:06');
+INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_total_balance`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (19, 55, 368, 368, 363, '2025-10-26 16:00:00', 1, '2025-10-20 07:39:06', '2025-10-27 07:14:22');
 COMMIT;
 
 -- ----------------------------
@@ -451,6 +455,44 @@ INSERT INTO `t_wishmovie` (`wishMovie_id`, `user_id`, `movie_id`) VALUES (115, 1
 INSERT INTO `t_wishmovie` (`wishMovie_id`, `user_id`, `movie_id`) VALUES (116, 1, 8);
 INSERT INTO `t_wishmovie` (`wishMovie_id`, `user_id`, `movie_id`) VALUES (117, 1, 7);
 INSERT INTO `t_wishmovie` (`wishMovie_id`, `user_id`, `movie_id`) VALUES (118, 1, 10);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for task_callback_records
+-- ----------------------------
+DROP TABLE IF EXISTS `task_callback_records`;
+CREATE TABLE `task_callback_records` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `order_id` varchar(100) NOT NULL,
+  `user_id` int NOT NULL,
+  `task_id` int DEFAULT NULL,
+  `reward_coins` int NOT NULL,
+  `total_count` int DEFAULT '0',
+  `completed_count` int DEFAULT '0',
+  `callback_timestamp` bigint DEFAULT NULL,
+  `timezone` varchar(50) DEFAULT 'Asia/Shanghai',
+  `status` varchar(20) DEFAULT 'success',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `order_id` (`order_id`),
+  KEY `idx_user_id` (`user_id`),
+  KEY `idx_order_id` (`order_id`),
+  KEY `idx_task_id` (`task_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='任务回调记录表';
+
+-- ----------------------------
+-- Records of task_callback_records
+-- ----------------------------
+BEGIN;
+INSERT INTO `task_callback_records` (`id`, `order_id`, `user_id`, `task_id`, `reward_coins`, `total_count`, `completed_count`, `callback_timestamp`, `timezone`, `status`, `created_at`) VALUES (1, 'TEST_1761535685515', 55, 14, 10, 2, 1, 1761535685515, 'Asia/Shanghai', 'success', '2025-10-27 03:28:05');
+INSERT INTO `task_callback_records` (`id`, `order_id`, `user_id`, `task_id`, `reward_coins`, `total_count`, `completed_count`, `callback_timestamp`, `timezone`, `status`, `created_at`) VALUES (2, 'ORD176153635209986jxuawtz', 55, 14, 0, 0, 6, 1761536352101, 'Asia/Shanghai', 'success', '2025-10-27 03:39:12');
+INSERT INTO `task_callback_records` (`id`, `order_id`, `user_id`, `task_id`, `reward_coins`, `total_count`, `completed_count`, `callback_timestamp`, `timezone`, `status`, `created_at`) VALUES (3, 'TEST_LAST_BALANCE_1761537028912', 55, 14, 15, 5, 3, 1761537028912, 'Asia/Shanghai', 'success', '2025-10-27 03:50:28');
+INSERT INTO `task_callback_records` (`id`, `order_id`, `user_id`, `task_id`, `reward_coins`, `total_count`, `completed_count`, `callback_timestamp`, `timezone`, `status`, `created_at`) VALUES (4, 'ORD17615372307012bkjp7u49', 55, 14, 0, 0, 7, 1761537230703, 'Asia/Shanghai', 'success', '2025-10-27 03:53:50');
+INSERT INTO `task_callback_records` (`id`, `order_id`, `user_id`, `task_id`, `reward_coins`, `total_count`, `completed_count`, `callback_timestamp`, `timezone`, `status`, `created_at`) VALUES (5, 'ORD1761538376357sjuhjtskg', 55, 14, 3, 0, 8, 1761538376374, 'Asia/Shanghai', 'success', '2025-10-27 04:12:56');
+INSERT INTO `task_callback_records` (`id`, `order_id`, `user_id`, `task_id`, `reward_coins`, `total_count`, `completed_count`, `callback_timestamp`, `timezone`, `status`, `created_at`) VALUES (6, 'ORD17615476530594eyd5mbjq', 55, 13, 5, 0, 1, 1761547653071, 'Asia/Shanghai', 'success', '2025-10-27 06:47:33');
+INSERT INTO `task_callback_records` (`id`, `order_id`, `user_id`, `task_id`, `reward_coins`, `total_count`, `completed_count`, `callback_timestamp`, `timezone`, `status`, `created_at`) VALUES (7, 'ORD1761547841490sgwrptvpw', 55, 13, 5, 0, 2, 1761547841497, 'Asia/Shanghai', 'success', '2025-10-27 06:50:41');
+INSERT INTO `task_callback_records` (`id`, `order_id`, `user_id`, `task_id`, `reward_coins`, `total_count`, `completed_count`, `callback_timestamp`, `timezone`, `status`, `created_at`) VALUES (8, 'ORD1761548059618edpgzrmq6', 55, 17, 5, 0, 1, 1761548059627, 'Asia/Shanghai', 'success', '2025-10-27 06:54:19');
+INSERT INTO `task_callback_records` (`id`, `order_id`, `user_id`, `task_id`, `reward_coins`, `total_count`, `completed_count`, `callback_timestamp`, `timezone`, `status`, `created_at`) VALUES (9, 'ORD1761549262644z23xrg5qu', 55, 13, 5, 0, 3, 1761549262664, 'Asia/Shanghai', 'success', '2025-10-27 07:14:22');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
