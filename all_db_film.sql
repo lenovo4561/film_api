@@ -1,5 +1,5 @@
 -- MySQL dump for database: db_film
--- Generated on: 2025/10/27 19:23:55
+-- Generated on: 2025-10-30 09:59:14
 -- Host: localhost:3306
 
 SET NAMES utf8mb4;
@@ -72,7 +72,7 @@ CREATE TABLE `t_coin_records` (
   KEY `idx_user_id` (`user_id`),
   KEY `idx_created_at` (`created_at`),
   CONSTRAINT `fk_coin_records_user` FOREIGN KEY (`user_id`) REFERENCES `t_user` (`user_id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of t_coin_records
@@ -94,6 +94,9 @@ INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_typ
 INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (14, 55, 20, 'checkin', '第1天签到奖励', 280, '2025-10-24 02:17:11');
 INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (15, 55, 20, 'checkin', '第1天签到奖励', 300, '2025-10-27 03:15:00');
 INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (16, 55, 20, 'checkin', '第1天签到奖励', 348, '2025-10-27 04:13:16');
+INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (17, 55, 20, 'checkin', '第1天签到奖励', 403, '2025-10-29 09:15:48');
+INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (18, 55, 20, 'checkin', '第1天签到奖励', 428, '2025-10-29 09:36:57');
+INSERT INTO `t_coin_records` (`record_id`, `user_id`, `coin_change`, `change_type`, `change_reason`, `balance_after`, `created_at`) VALUES (19, 55, 20, 'checkin', '第1天签到奖励', 453, '2025-10-29 10:58:24');
 COMMIT;
 
 -- ----------------------------
@@ -408,7 +411,7 @@ INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`
 INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_total_balance`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (16, 52, 0, 0, 0, NULL, 0, '2025-10-20 07:39:06', '2025-10-20 07:39:06');
 INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_total_balance`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (17, 53, 0, 0, 0, NULL, 0, '2025-10-20 07:39:06', '2025-10-20 07:39:06');
 INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_total_balance`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (18, 54, 0, 0, 0, NULL, 0, '2025-10-20 07:39:06', '2025-10-20 07:39:06');
-INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_total_balance`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (19, 55, 368, 368, 363, '2025-10-26 16:00:00', 1, '2025-10-20 07:39:06', '2025-10-27 07:14:22');
+INSERT INTO `t_user_coins` (`coin_id`, `user_id`, `coin_balance`, `total_earned`, `last_total_balance`, `last_checkin_date`, `continuous_days`, `created_at`, `updated_at`) VALUES (19, 55, 458, 458, 453, '2025-10-28 16:00:00', 1, '2025-10-20 07:39:06', '2025-10-29 10:59:26');
 COMMIT;
 
 -- ----------------------------
@@ -478,7 +481,7 @@ CREATE TABLE `task_callback_records` (
   KEY `idx_user_id` (`user_id`),
   KEY `idx_order_id` (`order_id`),
   KEY `idx_task_id` (`task_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='任务回调记录表';
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='任务回调记录表';
 
 -- ----------------------------
 -- Records of task_callback_records
@@ -493,6 +496,12 @@ INSERT INTO `task_callback_records` (`id`, `order_id`, `user_id`, `task_id`, `re
 INSERT INTO `task_callback_records` (`id`, `order_id`, `user_id`, `task_id`, `reward_coins`, `total_count`, `completed_count`, `callback_timestamp`, `timezone`, `status`, `created_at`) VALUES (7, 'ORD1761547841490sgwrptvpw', 55, 13, 5, 0, 2, 1761547841497, 'Asia/Shanghai', 'success', '2025-10-27 06:50:41');
 INSERT INTO `task_callback_records` (`id`, `order_id`, `user_id`, `task_id`, `reward_coins`, `total_count`, `completed_count`, `callback_timestamp`, `timezone`, `status`, `created_at`) VALUES (8, 'ORD1761548059618edpgzrmq6', 55, 17, 5, 0, 1, 1761548059627, 'Asia/Shanghai', 'success', '2025-10-27 06:54:19');
 INSERT INTO `task_callback_records` (`id`, `order_id`, `user_id`, `task_id`, `reward_coins`, `total_count`, `completed_count`, `callback_timestamp`, `timezone`, `status`, `created_at`) VALUES (9, 'ORD1761549262644z23xrg5qu', 55, 13, 5, 0, 3, 1761549262664, 'Asia/Shanghai', 'success', '2025-10-27 07:14:22');
+INSERT INTO `task_callback_records` (`id`, `order_id`, `user_id`, `task_id`, `reward_coins`, `total_count`, `completed_count`, `callback_timestamp`, `timezone`, `status`, `created_at`) VALUES (10, 'ORD1761728702249xgk1t2yft', 55, 17, 5, 0, 2, 1761728702252, 'Asia/Shanghai', 'success', '2025-10-29 09:05:02');
+INSERT INTO `task_callback_records` (`id`, `order_id`, `user_id`, `task_id`, `reward_coins`, `total_count`, `completed_count`, `callback_timestamp`, `timezone`, `status`, `created_at`) VALUES (11, 'ORD1761729134486x4y8jrsrr', 55, 17, 5, 0, 3, 1761729134490, 'Asia/Shanghai', 'success', '2025-10-29 09:12:14');
+INSERT INTO `task_callback_records` (`id`, `order_id`, `user_id`, `task_id`, `reward_coins`, `total_count`, `completed_count`, `callback_timestamp`, `timezone`, `status`, `created_at`) VALUES (12, 'ORD1761729175590bz8bvyyzf', 55, 17, 5, 0, 4, 1761729175596, 'Asia/Shanghai', 'success', '2025-10-29 09:12:55');
+INSERT INTO `task_callback_records` (`id`, `order_id`, `user_id`, `task_id`, `reward_coins`, `total_count`, `completed_count`, `callback_timestamp`, `timezone`, `status`, `created_at`) VALUES (13, 'ORD1761730482882w4q6jrfhe', 55, 17, 5, 0, 5, 1761730482884, 'Asia/Shanghai', 'success', '2025-10-29 09:34:42');
+INSERT INTO `task_callback_records` (`id`, `order_id`, `user_id`, `task_id`, `reward_coins`, `total_count`, `completed_count`, `callback_timestamp`, `timezone`, `status`, `created_at`) VALUES (14, 'ORD1761730950897vuvpwvahx', 55, 17, 5, 0, 6, 1761730950902, 'Asia/Shanghai', 'success', '2025-10-29 09:42:30');
+INSERT INTO `task_callback_records` (`id`, `order_id`, `user_id`, `task_id`, `reward_coins`, `total_count`, `completed_count`, `callback_timestamp`, `timezone`, `status`, `created_at`) VALUES (15, 'ORD176173556598949w6sbc0y', 55, 17, 5, 0, 7, 1761735565997, 'Asia/Shanghai', 'success', '2025-10-29 10:59:26');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -18,16 +18,19 @@ function md5(str) {
 
 /**
  * 生成签名字符串
- * 将参数按字典序排列（除了sign字段）
+ * 使用 app_secret, coins, time, userId 四个字段生成签名（按字典序排列）
  * @param {object} params 参数对象
+ * @param {string} appSecret 应用密钥
  * @returns {string} 签名字符串
  */
-function generateSignString(params) {
-  const keys = Object.keys(params)
-    .filter((key) => key !== "sign") // 排除sign字段
-    .sort(); // 字典序排序
+function generateSignString(params, appSecret) {
+  // 提取用于签名的四个字段：app_secret(密钥), coins(金币数量), time(时间戳), userId(用户ID)
+  const { coins, time, userId } = params;
+  const signParams = { app_secret: appSecret, coins, time, userId };
 
-  const signString = keys.map((key) => `${key}=${params[key]}`).join("&");
+  const keys = Object.keys(signParams).sort(); // 字典序排序: app_secret, coins, time, userId
+
+  const signString = keys.map((key) => `${key}=${signParams[key]}`).join("&");
 
   return signString;
 }
@@ -40,9 +43,9 @@ function generateSignString(params) {
  */
 function generateSignature(params, appSecret) {
   // 生成签名字符串
-  const signString = generateSignString(params);
+  const signString = generateSignString(params, appSecret);
 
-  // 计算签名：md5(签名字符串 + 产品密钥)
+  // 计算签名：md5(签名字符串 + app_secret)
   const sign = md5(signString + appSecret);
 
   return sign;
@@ -50,41 +53,48 @@ function generateSignature(params, appSecret) {
 
 /**
  * 验证回调签名
+ * 验证逻辑：
+ * 1. appKey 必须在配置中存在
+ * 2. timestamp 与当前时间的差值必须小于5分钟
+ * 3. 签名验证：使用 app_secret, coins, time, userId 生成签名并比对
  * @param {object} params 回调参数
- * @param {string} params.channel 应用标识（channel）
- * @param {number} params.time 时间戳
+ * @param {string} params.appKey 应用标识（app_key）
+ * @param {number} params.timestamp 时间戳（毫秒）
+ * @param {number} params.coins 金币数量
+ * @param {string} params.userId 用户ID
  * @param {string} params.sign 签名
  * @returns {object} 验证结果 { valid: boolean, message: string }
  */
 function verifyCallbackSignature(params) {
-  const { channel, time, sign } = params;
+  const { appKey, timestamp, coins, userId, sign } = params;
 
   // 1. 参数验证
-  if (!channel || !time || !sign) {
+  if (!appKey || !timestamp || coins === undefined || !userId || !sign) {
     return {
       valid: false,
-      message: "签名验证失败：缺少必要的签名参数（channel, time, sign）",
+      message:
+        "签名验证失败：缺少必要的签名参数（appKey, timestamp, coins, userId, sign）",
     };
   }
 
-  // 2. 获取 appSecret
-  const appSecret = appConfig.getAppSecret(channel);
+  // 2. 验证 appKey 是否在配置中存在
+  const appSecret = appConfig.getAppSecret(appKey);
   if (!appSecret) {
-    console.error(`[签名验证] 未知的 channel: ${channel}`);
+    console.error(`[签名验证] 未知的 appKey: ${appKey}`);
     return {
       valid: false,
-      message: "签名验证失败：无效的 channel",
+      message: "签名验证失败：无效的 appKey",
     };
   }
 
-  // 3. 验证时间戳（防止重放攻击）
+  // 3. 验证时间戳（与当前时间的差值必须小于5分钟）
   const now = Date.now();
-  const timeDiff = Math.abs(now - time);
+  const timeDiff = Math.abs(now - timestamp);
   const maxTimeDiff = 5 * 60 * 1000; // 5分钟有效期
 
   if (timeDiff > maxTimeDiff) {
     console.error(
-      `[签名验证] 时间戳过期: 当前=${now}, 请求=${time}, 差值=${timeDiff}ms`
+      `[签名验证] 时间戳过期: 当前=${now}, 请求=${timestamp}, 差值=${timeDiff}ms`
     );
     return {
       valid: false,
@@ -92,18 +102,24 @@ function verifyCallbackSignature(params) {
     };
   }
 
-  // 4. 生成期望的签名（排除 sign 字段）
-  const paramsWithoutSign = { ...params };
-  delete paramsWithoutSign.sign;
-
-  const expectedSign = generateSignature(paramsWithoutSign, appSecret);
+  // 4. 生成期望的签名（使用 app_secret, coins, time, userId）
+  const signParams = { coins, time: timestamp, userId };
+  const expectedSign = generateSignature(signParams, appSecret);
 
   // 5. 比对签名
   if (sign !== expectedSign) {
     console.error(`[签名验证] 签名不匹配:`);
     console.error(`  - 收到的签名: ${sign}`);
     console.error(`  - 期望的签名: ${expectedSign}`);
-    console.error(`  - 签名字符串: ${generateSignString(paramsWithoutSign)}`);
+    console.error(
+      `  - 签名字符串: ${generateSignString(signParams, appSecret)}`
+    );
+    console.error(
+      `  - 签名参数: app_secret=${appSecret.substring(
+        0,
+        16
+      )}..., coins=${coins}, time=${timestamp}, userId=${userId}`
+    );
     return {
       valid: false,
       message: "签名验证失败：签名不匹配",
@@ -112,7 +128,7 @@ function verifyCallbackSignature(params) {
 
   // 验证通过
   console.log(
-    `[签名验证] ✅ 验证通过: channel=${channel}, userId=${params.userId}`
+    `[签名验证] ✅ 验证通过: appKey=${appKey}, userId=${userId}, coins=${coins}, time=${timestamp}`
   );
   return {
     valid: true,

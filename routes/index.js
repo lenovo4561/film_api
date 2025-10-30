@@ -208,32 +208,37 @@ router.post("/api/pwdLogin", function (req, res) {
   let name = req.body.userName;
   let pwd = req.body.password;
   let captcha = req.body.captcha;
-  //判断验证码是否正确
-  if (captcha.toLowerCase() !== req.session.captcha) {
-    res.json({ error_code: 1, message: "验证码不正确" });
-  } else {
-    delete req.session.captcha;
-    let sqlStr = "SELECT * from t_user WHERE user_name =? LIMIT 1 ;";
-    conn.query(sqlStr, [name], (error, result, field) => {
-      if (error) {
-        res.json({ error_code: 1, message: "查询用户失败" });
-      } else {
-        result = JSON.parse(JSON.stringify(result));
-        if (result[0]) {
-          if (result[0].password === pwd) {
-            //保存用户id
-            req.session.userId = result[0].user_id;
-            res.cookie("user_id", result[0].user_id);
-            res.json({ success_code: 200 });
-          } else {
-            res.json({ error_code: 1, message: "密码错误" });
-          }
+
+  // 注释掉验证码校验逻辑 - 只需账号密码即可登录
+  // //判断验证码是否正确
+  // if (captcha.toLowerCase() !== req.session.captcha) {
+  //   res.json({ error_code: 1, message: "验证码不正确" });
+  // } else {
+  //   delete req.session.captcha;
+
+  // 直接进行账号密码验证
+  let sqlStr = "SELECT * from t_user WHERE user_name =? LIMIT 1 ;";
+  conn.query(sqlStr, [name], (error, result, field) => {
+    if (error) {
+      res.json({ error_code: 1, message: "查询用户失败" });
+    } else {
+      result = JSON.parse(JSON.stringify(result));
+      if (result[0]) {
+        if (result[0].password === pwd) {
+          //保存用户id
+          req.session.userId = result[0].user_id;
+          res.cookie("user_id", result[0].user_id);
+          res.json({ success_code: 200 });
         } else {
-          res.json({ error_code: 1, message: "用户不存在" });
+          res.json({ error_code: 1, message: "密码错误" });
         }
+      } else {
+        res.json({ error_code: 1, message: "用户不存在" });
       }
-    });
-  }
+    }
+  });
+
+  // } // 注释掉的验证码校验结束
 });
 //获取用户信息
 router.get("/api/getUserInfo", function (req, res) {
@@ -2614,8 +2619,8 @@ router.post("/api/task/callback", (req, res) => {
   console.log("请求参数:", JSON.stringify(req.body, null, 2));
 
   const {
-    channel,
-    time,
+    appKey,
+    timestamp,
     sign,
     userId,
     taskId,
@@ -2662,11 +2667,12 @@ router.post("/api/task/callback", (req, res) => {
   // 3. 规范化 userId（适配数据库 INT 类型）
   const normalizedUserId = normalizeUserId(userId);
   console.log(`[回调] 用户ID规范化: ${userId} -> ${normalizedUserId}`);
-  console.log(`[回调] Channel: ${channel}`);
+  console.log(`[回调] AppKey: ${appKey}`);
   console.log(`[回调] 任务ID: ${taskId}`);
   console.log(`[回调] 订单ID: ${orderId}`);
   console.log(`[回调] 奖励金币: ${coinsNum}`);
   console.log(`[回调] 完成进度: ${completedCount}/${totalCount}`);
+  console.log(`[回调] 时间戳: ${timestamp}`);
 
   // 3. 检查订单是否已处理（防重复）
   const checkOrderSql =
